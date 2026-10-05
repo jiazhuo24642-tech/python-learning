@@ -5,10 +5,12 @@ class Student(object):
         self.name = name
         self.score = score
     def get_grade(self):
-        if self.score >= 60:
-            return 'B'
-        if self.score >= 80:
+        if self.score < 0 or self.score > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        if self.score >=80:
             return 'A'
+        elif self.score >= 60:
+            return 'B'
         return 'C'
 
 class TestStudent(unittest.TestCase):
@@ -38,6 +40,21 @@ class TestStudent(unittest.TestCase):
             s1.get_grade()
         with self.assertRaises(ValueError):
             s2.get_grade()
+
+class TestDict(unittest.TestCase):
+    def setUp(self):
+        print('setUp...')
+
+    def tearDown(self):
+        print('tearDown...')
+    def test_1(self):
+        pass
+
+    def test_2(self):
+        pass
+
+    def test_3(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
